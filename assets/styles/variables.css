@@ -1,0 +1,43 @@
+/* assets/styles/variables.css */
+:root {
+    /* Colors */
+    --blue-prim: #3C7FFF;       
+    --blue-prim-hover: #184CA9; 
+    --blue-hover: #69A0FF;
+    --gray: #1F1F1F;
+    --white: #FAFBFD;
+
+    /* Backgrounds */
+    --bg: #151515;                  /* Arrière-plan foncé pour les éléments */
+    --bg-gray: #343434;             /* Arrière-plan plus foncé (fond de page) */
+    
+    /* Text Colors */
+    --text-light: #FAFBFD;          /* Texte clair */
+    --text-muted: #B2B2B2;          /* Texte moins important */
+    
+    /* Borders */
+    --button-border: rgba(64, 64, 64, 1);       /* Bordures standard */
+    --border: rgba(42, 42, 45, 1);              /* Bordures actives/hover */
+    
+    /* Border Radius */
+    --radius-sm: 4px;               /* Arrondi léger */
+    --radius-md: 8px;               /* Arrondi moyen */
+    --radius-lg: 50px;              /* Arrondi complet (pour les boutons) */
+    
+    /* Font Sizes */
+    --font-little-little: 0.75rem;              /* 12px */
+    --font-buttons-text: 0.8125rem;             /* 13px */   
+    --font-links: 0.875rem;                     /* 14px */
+    --font-P: 0.9375rem;                        /* 15px */
+    --font-Big-text: 1.125rem;                  /* 18px */
+    --font-H1: 2.75rem;                         /* 44px */
+    
+    /* Font Weights */
+    --weight-normal: 400;
+    --weight-medium: 500;
+    --weight-bold: 600;
+    --weight-black: 800;
+    
+    /* Transitions */
+    --transition: 0.15s ease;
+}
