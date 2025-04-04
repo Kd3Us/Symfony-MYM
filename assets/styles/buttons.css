@@ -162,3 +162,31 @@
     gap: 12px;
     flex-wrap: wrap;
 }
+
+.button-very-small.button-inactive,
+.button-small.button-inactive,
+.button-medium.button-inactive {
+    background-color: transparent;
+    border: 1px solid var(--text-light);
+    color: var(--text-light);
+}
+
+.button-very-small.button-inactive:hover,
+.button-small.button-inactive:hover,
+.button-medium.button-inactive:hover {
+    background-color: transparent;
+    border-color: var(--blue-hover);
+    color: var(--blue-hover);
+}
+
+.button-big.button-inactive {
+    background-color: transparent;
+    border: 1px solid var(--text-light); /* Blanc par défaut */
+    color: var(--text-light);
+}
+
+.button-big.button-inactive:hover {
+    background-color: transparent;
+    border-color: var(--blue-hover); /* Bleu de hover */
+    color: var(--blue-hover); /* Couleur bleu de hover */
+}
