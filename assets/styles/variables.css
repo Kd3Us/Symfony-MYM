@@ -28,9 +28,9 @@
     --font-little-little: 0.75rem;              /* 12px */
     --font-buttons-text: 0.8125rem;             /* 13px */   
     --font-links: 0.875rem;                     /* 14px */
-    --font-P: 0.9375rem;                        /* 15px */
-    --font-Big-text: 1.125rem;                  /* 18px */
-    --font-H1: 2.75rem;                         /* 44px */
+    --font-paragraph: 0.9375rem;                /* 15px */
+    --font-big-text: 1.125rem;                  /* 18px */
+    --font-h1: 2.75rem;                         /* 44px */
     
     /* Font Weights */
     --weight-normal: 400;
