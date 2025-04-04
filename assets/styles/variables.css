@@ -4,20 +4,20 @@
     --blue-prim: #3C7FFF;       
     --blue-prim-hover: #184CA9; 
     --blue-hover: #69A0FF;
-    --gray: #1F1F1F;
+    --gray: #343434;             
     --white: #FAFBFD;
-
+    
     /* Backgrounds */
     --bg: #151515;                  /* Arrière-plan foncé pour les éléments */
-    --bg-gray: #343434;             /* Arrière-plan plus foncé (fond de page) */
+    --bg-gray: #1F1F1F;             /* Arrière-plan plus foncé (fond de page) */
     
     /* Text Colors */
     --text-light: #FAFBFD;          /* Texte clair */
     --text-muted: #B2B2B2;          /* Texte moins important */
     
     /* Borders */
-    --button-border: rgba(64, 64, 64, 1);       /* Bordures standard */
-    --border: rgba(42, 42, 45, 1);              /* Bordures actives/hover */
+    --button-border: #404040;                   /* Bordures standard */
+    --border: #2A2A2D;                          /* Bordures actives/hover */
     
     /* Border Radius */
     --radius-sm: 4px;               /* Arrondi léger */

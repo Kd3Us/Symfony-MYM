@@ -1,0 +1,27 @@
+{% set icons = [
+    'icon-home',
+    'icon-user',
+    'icon-settings',
+    'icon-search',
+    'icon-notification',
+    'icon-message',
+    'icon-heart',
+    'icon-star'
+] %}
+
+{% set sizes = {
+    'lg': '24px',
+    'md': '18px',
+    'sm': '12px'
+} %}
+
+{% set selected_size = sizes[size|default('md')] %}
+
+{% if selected_icon in icons %}
+    <div class="icon-item">
+        <i class="{{ selected_icon }}" style="font-size: {{ selected_size }};"></i>
+        <span>{{ selected_icon }}</span>
+    </div>
+{% else %}
+    <p>Aucune icône sélectionnée ou icône invalide.</p>
+{% endif %}

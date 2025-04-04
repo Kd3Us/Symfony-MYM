@@ -1,0 +1,13 @@
+<div class="input-component">
+    <label for="{{ id }}">{{ label }}</label>
+    <input 
+        type="{{ type|default('text') }}"
+        id="{{ id }}"
+        name="{{ name }}"
+        value="{{ value|default('') }}"
+        placeholder="{{ placeholder|default('') }}"
+        {% if required %}required{% endif %}
+        {% if disabled %}disabled{% endif %}
+        class="{{ class|default('') }}"
+    />
+</div>
