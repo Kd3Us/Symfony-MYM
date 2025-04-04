@@ -1,0 +1,6 @@
+<div class="nav-button {% if isActionButton %}nav-button-action{% endif %} {% if isActive %}active{% endif %}">
+    <div class="icon">
+        {% include 'components/Icon.html.twig' with { 'iconName': iconName, "size": "md" } %}
+    </div>
+    <span class="text">{{ text }}</span>
+</div>
