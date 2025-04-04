@@ -1,0 +1,79 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Feed{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+
+    .page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    .register-container {
+        display: flex;
+        justify-self: center;
+        flex-direction: column;
+        width: 276px;
+        gap: 40px;
+        align-items: center;
+        color: var(--text-light);
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        width: 100%;
+    }
+
+    .inputs {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+    }
+
+    .password {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .footer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 13px;
+        width: 100%;
+    }
+
+        
+    </style>
+{% endblock %}
+
+{% block body %}
+<div class="page">
+    <div class="register-container">
+        <h1>Log In</h1>
+        <form method="post" action="{{ path('app_login') }}">
+            <div class="inputs">
+                    {{ include('components/Input.html.twig', { id: 'email', label: 'Email', type: "email", name: '_username', placeholder: 'your@email.com', required:true }) }}
+                <div class="password">
+                    {{ include('components/Input.html.twig', { id: 'password', label: 'Password',type: "password", name: '_password', placeholder: 'Forgot password ?', required: true }) }}
+                    {{ include('components/Link.html.twig', { href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', text: "Forgot password ?" }) }}
+                </div>
+            </div>
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            {{ include('components/Button.html.twig', { label: 'Log In', type:"submit" }) }}
+        </form>
+        <div class="footer">
+            <p>Don't have an account?</p>
+            {{ include('components/Link.html.twig', { href: 'register', variant: "blue", text: 'Register Here' }) }}
+        </div>
+    </div>
+</div>
+{% endblock %}

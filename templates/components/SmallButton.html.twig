@@ -1,0 +1,34 @@
+<button 
+    type="{{ type|default('button') }}"
+    class="
+        button 
+        button-small
+        {% if disabled|default(false) %}button-disabled{% endif %}
+        {% if inactive|default(false) %}button-inactive{% else %}
+            button-primary
+        {% endif %}
+        {{ class|default('') }}
+    "
+    {% if disabled|default(false) %}disabled{% endif %}
+    {{ attributes|default('') }}
+>
+    {% if leftIcon is defined and leftIcon %}
+        <span class="button-icon button-icon-left">
+            {% include 'components/Icon.html.twig' with { 'iconName': leftIcon, 'size': 'sm' } %}
+        </span>
+    {% endif %}
+    
+    <span class="button-label">
+        {% if label is defined %}
+            {{ label }}
+        {% else %}
+            Button
+        {% endif %}
+    </span>
+    
+    {% if rightIcon is defined and rightIcon %}
+        <span class="button-icon button-icon-right">
+            {% include 'components/Icon.html.twig' with { 'iconName': rightIcon, 'size': 'sm' } %}
+        </span>
+    {% endif %}
+</button>

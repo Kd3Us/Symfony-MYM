@@ -1,0 +1,17 @@
+<div 
+    class="search-container" 
+    data-controller="search" 
+    data-search-url="{{ path('search_users') }}"
+>
+    <input 
+        type="text" 
+        class="search-input" 
+        placeholder="Rechercher des utilisateurs..."
+        data-search-target="input"
+        data-action="input->search#search"
+    />
+    <div 
+        class="search-results hidden" 
+        data-search-target="results"
+    ></div>
+</div>

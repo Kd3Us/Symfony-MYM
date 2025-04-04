@@ -22,3 +22,10 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    App\Service\Minio:
+        arguments:
+            $endpoint: '%env(MINIO_ENDPOINT)%'
+            $accessKey: '%env(MINIO_ACCESS_KEY)%'
+            $secretKey: '%env(MINIO_SECRET_KEY)%'
+            $bucketName: '%env(MINIO_BUCKET_NAME)%'
