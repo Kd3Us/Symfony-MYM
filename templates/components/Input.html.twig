@@ -6,8 +6,8 @@
         name="{{ name }}"
         value="{{ value|default('') }}"
         placeholder="{{ placeholder|default('') }}"
-        {% if required %}required{% endif %}
-        {% if disabled %}disabled{% endif %}
+        {% if required|default(false) %}required{% endif %}
+        {% if disabled|default(false) %}disabled{% endif %}
         class="{{ class|default('') }}"
     />
 </div>
