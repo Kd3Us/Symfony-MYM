@@ -65,6 +65,7 @@ a {
     gap: 6px;
     align-items: stretch;
     color: var(--text-light);
+    width: 100%;
 }
 .input-component input {
     padding: 10px 24px 10px 16px;

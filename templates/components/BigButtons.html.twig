@@ -19,7 +19,7 @@
     {% if label is defined %}
         <span class="button-label">{{ label }}</span>
     {% else %}
-        <span class="button-label">{{ block('content')|default('Button') }}</span>
+        <span class="button-label">{{ content|default('Button') }}</span>
     {% endif %}
     
     {% if rightIcon is defined and rightIcon %}
