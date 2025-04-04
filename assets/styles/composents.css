@@ -1,0 +1,55 @@
+input {
+    all: unset;
+}
+
+.input-component {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    align-items: stretch;
+    color: var(--text-light);
+}
+.input-component input {
+    padding: 10px 24px 10px 16px;
+    border-radius: 10px;
+    background-color: var(--gray);
+    border: 1px solid var(--button-border);
+}
+
+.input-component input:focus {
+    outline: none;
+    color: var(--text-white);
+    border: 1px solid var(--blue-prim);
+}
+
+.input-component label {
+    color: var(--text-light);
+    font-size: var(--font-paragraph);
+}
+
+/* QUICK ACTIONS */
+
+.quick-action {
+    display: flex;
+    flex-direction: flex;
+    gap: 6px;
+    padding: 4px 8px;
+    border-radius: 100px;
+    border: 1px solid rgba(0, 0, 0, 0);
+    background-color: var(--bg-gray);
+    width: max-content;
+    cursor: pointer;
+}
+
+.quick-action .text {
+    color: var(--text-muted)
+}
+
+.quick-action .icon path {
+    stroke: var(--text-muted);
+}
+
+.quick-action:hover {
+    background-color: var(--gray);
+    border: 1px solid var(--button-border);
+}
