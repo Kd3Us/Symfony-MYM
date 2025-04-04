@@ -15,19 +15,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id;
 
     #[ORM\Column(length: 180)]
-    private ?string $email = null;
+    private string $email;
 
     #[ORM\Column(length: 50)]
-    private ?string $username = null;
+    private string $username;
 
     #[ORM\Column]
-    private array $roles = [];
+    private array $roles = ["ROLE_USER"];
 
     #[ORM\Column(length: 60)]
-    private ?string $password = null;
+    private string $password;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $profilePicture = null;
@@ -42,12 +42,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getUserName(): ?string
     {
-        return $this->userName;
+        return $this->username;
     }
 
-    public function setUserName(string $userName): static
+    public function setUserName(string $username): static
     {
-        $this->userName = $userName;
+        $this->username = $username;
 
         return $this;
     }

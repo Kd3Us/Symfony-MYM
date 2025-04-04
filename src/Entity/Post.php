@@ -3,7 +3,6 @@
 namespace App\Entity;
 
 use App\Repository\PostRepository;
-use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PostRepository::class)]
@@ -14,67 +13,52 @@ class Post
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
-    private ?string $content = null;
+    #[ORM\Column]
+    private int $user_id;
 
     #[ORM\Column(length: 255, nullable: true)]
-    private ?string $imageFilename = null;
+    private ?string $description = null;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
-
-    #[ORM\ManyToOne]
-    private ?User $author = null;
+    #[ORM\Column(length:255)]
+    private ?string $image_id = null;
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getContent(): ?string
+    public function getUserId(): ?int
     {
-        return $this->content;
+        return $this->user_id;
     }
 
-    public function setContent(?string $content): static
+    public function setUserId(int $user_id): static
     {
-        $this->content = $content;
+        $this->user_id = $user_id;
 
         return $this;
     }
 
-    public function getImageFilename(): ?string
+    public function getDescription(): ?string
     {
-        return $this->imageFilename;
+        return $this->description;
     }
 
-    public function setImageFilename(?string $imageFilename): static
+    public function setDescription(?string $description): static
     {
-        $this->imageFilename = $imageFilename;
+        $this->description = $description;
 
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getImageId(): ?string
     {
-        return $this->createdAt;
+        return $this->image_id;
     }
 
-    public function setCreatedAt(\DateTimeImmutable $createdAt): static
+    public function setImageId(string $image_id): static
     {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    public function getAuthor(): ?User
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(?User $author): static
-    {
-        $this->author = $author;
+        $this->image_id = $image_id;
 
         return $this;
     }

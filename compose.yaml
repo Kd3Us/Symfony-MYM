@@ -1,5 +1,5 @@
-version: '3.7'
-services:
+version: '3.8'
+services: 
     database:
         image: 'mysql:latest'
         environment:
@@ -23,3 +23,15 @@ services:
             # "80" to "8080:80". Where the first port is exposed to the host and the second is the container port.
             # See https://docs.docker.com/compose/compose-file/compose-file-v3/#ports for more information.
             - '8080:80'
+    minio: 
+        image: minio/minio
+        environment: 
+            MINIO_ROOT_USER: access1234
+            MINIO_ROOT_PASSWORD: secret1234
+        volumes:
+            - ./data/minio:/data
+            - ./data/minio-config:/root/.minio
+        command: server /data --console-address ":9001"
+        ports:
+            - 9000:9000
+            - 9001:9001

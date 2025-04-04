@@ -16,28 +16,51 @@ class FollowRepository extends ServiceEntityRepository
         parent::__construct($registry, Follow::class);
     }
 
-    //    /**
-    //     * @return Follow[] Returns an array of Follow objects
-    //     */
-    //    public function findByExampleField($value): array
-    //    {
-    //        return $this->createQueryBuilder('f')
-    //            ->andWhere('f.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->orderBy('f.id', 'ASC')
-    //            ->setMaxResults(10)
-    //            ->getQuery()
-    //            ->getResult()
-    //        ;
-    //    }
+    /**
+     * Get all followers of a user by their ID.
+     *
+     * @param int $userId
+     * @return Follow[]
+     */
+    public function findFollowersByUserId(int $userId): array
+    {
+        return $this->createQueryBuilder('f')
+            ->andWhere('f.followed = :userId')
+            ->setParameter('userId', $userId)
+            ->getQuery()
+            ->getResult();
+    }
 
-    //    public function findOneBySomeField($value): ?Follow
-    //    {
-    //        return $this->createQueryBuilder('f')
-    //            ->andWhere('f.exampleField = :val')
-    //            ->setParameter('val', $value)
-    //            ->getQuery()
-    //            ->getOneOrNullResult()
-    //        ;
-    //    }
+    /**
+     * Get all users followed by a user by their ID.
+     *
+     * @param int $userId
+     * @return Follow[]
+     */
+    public function findFollowingByUserId(int $userId): array
+    {
+        return $this->createQueryBuilder('f')
+            ->andWhere('f.follower = :userId')
+            ->setParameter('userId', $userId)
+            ->getQuery()
+            ->getResult();
+    }
+
+    /**
+     * Check if a user is already following another user.
+     *
+     * @param int $followerId
+     * @param int $followedUserId
+     * @return Follow|null
+     */
+    public function findFollowRelation(int $followerId, int $followedUserId): ?Follow
+    {
+        return $this->createQueryBuilder('f')
+            ->andWhere('f.follower = :followerId')
+            ->andWhere('f.followedUser = :followedUserId')
+            ->setParameter('followerId', $followerId)
+            ->setParameter('followedUserId', $followedUserId)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
 }

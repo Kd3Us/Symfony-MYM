@@ -11,49 +11,49 @@ class Follow
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id = null;
+    private int $id;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $follower = null;
+    private User $follower;
 
-    #[ORM\ManyToOne]
+    #[ORM\ManyToOne(targetEntity: User::class)]
     #[ORM\JoinColumn(nullable: false)]
-    private ?User $followed = null;
+    private User $followed;
 
-    #[ORM\Column]
-    private ?\DateTimeImmutable $createdAt = null;
+    #[ORM\Column(nullable: false)]
+    private \DateTimeImmutable $createdAt;
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getFollower(): ?User
+    public function getFollower(): User
     {
         return $this->follower;
     }
 
-    public function setFollower(?User $follower): static
+    public function setFollower(User $follower): static
     {
         $this->follower = $follower;
 
         return $this;
     }
 
-    public function getFollowed(): ?User
+    public function getFollowed(): User
     {
         return $this->followed;
     }
 
-    public function setFollowed(?User $followed): static
+    public function setFollowed(User $followed): static
     {
         $this->followed = $followed;
 
         return $this;
     }
 
-    public function getCreatedAt(): ?\DateTimeImmutable
+    public function getCreatedAt(): \DateTimeImmutable
     {
         return $this->createdAt;
     }

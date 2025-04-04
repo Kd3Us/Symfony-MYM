@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    {{ encore_entry_link_tags('auth') }}
+{% endblock %}
+
+{% block body %}
+    <div class="auth-container">
+        <div class="auth-logo">
+            <h1>ME3M</h1>
+        </div>
+        <div class="auth-card">
+            {% block auth_content %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}
