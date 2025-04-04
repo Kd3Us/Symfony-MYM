@@ -11,7 +11,7 @@ final class LikeController extends AbstractController
     #[Route('/like', name: 'app_like')]
     public function index(): Response
     {
-        return $this->render('like/index.html.twig', [
+        return $this->render('like/login.html.twig', [
             'controller_name' => 'LikeController',
         ]);
     }
