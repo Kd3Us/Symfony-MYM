@@ -4,7 +4,7 @@
 
 {% block body %}
 
-{% include 'components/navButton.html.twig' with {isActive: true, isActionButton: false, iconName: "icon-home", text: "Bonjour"} %}
+{% include 'components/navButton.html.twig' with {isActive: true, isActionButton: true, iconName: "icon-home", text: "Bonjour"} %}
 {% include 'components/link.html.twig' with {text: "Text", href: "url", variant: "blue"} %}
 {% include 'components/input.html.twig' with {id: "Text", name: "url", label: "blue", required: true, placeholder: "eee", disabled: false} %}
 {% include 'components/quickActions.html.twig' with {iconName: "icon-heart", text: "CC"} %}
