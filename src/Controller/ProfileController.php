@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -72,5 +73,28 @@ class ProfileController extends AbstractController
             'status' => 'error',
             'message' => 'Invalid method'
         ], Response::HTTP_METHOD_NOT_ALLOWED);
+    }
+
+    #[Route('api/users/{id}', name: 'get_user_by_id', methods: ['GET'])]
+    public function getUserById(int $id, UserRepository $userRepository): JsonResponse
+    {
+        $user = $userRepository->find($id);
+
+        if (!$user) {
+            return new JsonResponse([
+                'status' => 'error',
+                'message' => 'User not found'
+            ], Response::HTTP_NOT_FOUND);
+        }
+
+        return $this->json([
+            'status' => 'success',
+            'user' => [
+                'id' => $user->getId(),
+                'username' => $user->getUsername(),
+                'email' => $user->getEmail(),
+                'roles' => $user->getRoles(),
+            ]
+        ]);
     }
 }

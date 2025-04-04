@@ -18,25 +18,28 @@ final class PostController extends AbstractController
 {
 
 
-    #[Route('/post', name: 'app_post')]
+    #[Route('/api/post', name: 'app_post', methods: ['GET'])]
     public function index(PostRepository $postRepository): Response
     {   
     
-        $user = 1;
-        $posts = $postRepository->findBy(['user_id' => $user]);
+        // $user = 1;
+        // $posts = $postRepository->findBy(['user_id' => $user]);
+        $posts = $postRepository->findAll();
+        // $posts = $postRepository->findBy(['user_id' => $user]);
         $postArray = [];
         foreach ($posts as $post) {
-            $postArray[] = $post->JsonSerialize();
+            $postArray[] =[
+                'id'=> $post->getId(),
+                'author'=> $post->getUserId(),
+                'description' => $post->getDescription(),
+                'image' => $post->getImageId()
+            ];
         }
         
-            return $this->render('post/index.html.twig', [
-            'controller_name' => 'PostController',
-            'posts' => $posts,
-        ]);
-        // return new JsonResponse($postArray, Response::HTTP_OK);
+        return $this->json($postArray, 200);
     }
 
-    #[Route(path:'/createPost', name: 'app_createPost', methods:["POST"])]
+    #[Route(path:'/api/post', name: 'app_createPost', methods:["POST"])]
     public function createPost(HttpFoundationRequest $request, 
     EntityManagerInterface $entityManager,
     Minio $minio): JsonResponse 
@@ -49,13 +52,14 @@ final class PostController extends AbstractController
         if (!$file) { 
             return new JsonResponse(null, Response::HTTP_BAD_REQUEST);
         }
+        
         $imageId = $minio->uploadFile($file);
 
 
 
         $NewPost = new Post();
         $NewPost 
-            ->setUserId($userId)
+            ->setUserId(1)
             ->setDescription($description)
             ->setImageId($imageId);
 

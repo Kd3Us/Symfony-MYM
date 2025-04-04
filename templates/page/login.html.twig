@@ -5,8 +5,17 @@
 {% block stylesheets %}
     {{ parent() }}
     <style>
+
+    .page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
     .register-container {
         display: flex;
+        justify-self: center;
         flex-direction: column;
         width: 276px;
         gap: 40px;
@@ -47,6 +56,7 @@
 {% endblock %}
 
 {% block body %}
+<div class="page">
     <div class="register-container">
         <h1>Log In</h1>
         <form>
@@ -57,11 +67,12 @@
                     {{ include('components/Link.html.twig', { href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', text: "Forgot password ?" }) }}
                 </div>
             </div>
-            {{ include('components/Button.html.twig', { content: 'Log In' }) }}
+            {{ include('components/Button.html.twig', { label: 'Log In' }) }}
         </form>
         <div class="footer">
             <p>Don't have an account?</p>
             {{ include('components/Link.html.twig', { href: 'register', variant: "blue", text: 'Register Here' }) }}
         </div>
     </div>
+</div>
 {% endblock %}

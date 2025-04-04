@@ -5,9 +5,18 @@
 {% block stylesheets %}
     {{ parent() }}
     <style>
+
+    .page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
     .register-container {
         display: flex;
         flex-direction: column;
+        justify-self: center;
         width: 276px;
         gap: 40px;
         align-items: center;
@@ -47,6 +56,7 @@
 {% endblock %}
 
 {% block body %}
+<div class="page">
     <div class="register-container">
         <h1>Register</h1>
         <form>
@@ -56,11 +66,12 @@
                     {{ include('components/Input.html.twig', { id: 'password', label: 'Password',type: "password", name: 'password', placeholder: 'Write your password' }) }}
                     {{ include('components/Input.html.twig', { id: 'passwordConfirm', label: 'Password',type: "password", name: 'passwordConfirm', placeholder: 'Confirm your password' }) }}
             </div>
-            {{ include('components/Button.html.twig', { content: 'Register' }) }}
+            {{ include('components/Button.html.twig', { label: 'Register' }) }}
         </form>
         <div class="footer">
             <p>Allready have an account?</p>
             {{ include('components/Link.html.twig', { href: 'login', variant: "blue", text: 'Log In here' }) }}
         </div>
     </div>
+</div>
 {% endblock %}

@@ -14,7 +14,7 @@ class Post
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $user_id = null;
+    private int $user_id;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $description = null;

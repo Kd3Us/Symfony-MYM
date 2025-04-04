@@ -5,6 +5,15 @@
 {% block stylesheets %}
     {{ parent() }}
     <style>
+
+    .page {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: var(--bg);
+    }
+
     .welcome-container {
         display: flex;
         flex-direction: column;
@@ -30,6 +39,7 @@
 {% endblock %}
 
 {% block body %}
+<div class="page">
     <div class="welcome-container">
         <h1>Welcome!</h1>
         <p>What will you do...</p>
@@ -42,4 +52,5 @@
         <p class="pfooter">Maybe none of these...</p>
         {{ include('components/Link.html.twig', { href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', variant: "blue", text: "Click here ;)" }) }}
     </div>
+</div>
 {% endblock %}

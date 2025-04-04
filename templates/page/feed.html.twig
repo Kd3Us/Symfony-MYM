@@ -9,6 +9,7 @@
         .feed-container {
             display: flex;
             flex-direction: column;
+            align-self: center;
             margin-top: 16px;
             border-radius: 34px 34px 0px 0px;
             background-color: var(--bg);
@@ -110,7 +111,6 @@
     <div class="navbar">
         {# {{ include('partials/navbar.html.twig') }} #}
     </div>
-
     <div class="feed-container">
         <div class="feed-header">
             <span class="feed-header-text">Your Feed</span>
@@ -122,16 +122,14 @@
                 <div class="post-content">
                     <div class="post-content-header">
                         <div class="post-content-left">
-                            <p>__blueOrchide</p>
-                            <p>Lorem 200000</p>
+                            <p>{{users[post.userId][0].username}}</p>
+                            <p>{{post.description}}</p>
                         </div>
                         {{ include('components/Button.html.twig', { label: 'Follow', size: "small",class: 'button-secondary' }) }}
                     </div>
                     <div class="post-content-body">
                         <div class="post-content-body-images">
-                            <img src="https://i.pinimg.com/736x/66/41/de/6641deb8863aceb2d6ac885d84ba1249.jpg" alt="Placeholder Image 1">
-                            <img src="https://i.pinimg.com/736x/66/41/de/6641deb8863aceb2d6ac885d84ba1249.jpg" alt="Placeholder Image 2">
-                            <img src="https://i.pinimg.com/736x/66/41/de/6641deb8863aceb2d6ac885d84ba1249.jpg" alt="Placeholder Image 3">
+                            <img src="{{post.imageId}}" alt="Placeholder Image 1">
                         </div>
                         <div class="post-content-body-interaction">
                             <div class="post-content-body-interaction">

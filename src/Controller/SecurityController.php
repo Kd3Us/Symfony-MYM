@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 
 class SecurityController extends AbstractController
 {
-    #[Route('api/login', name: 'app_login', methods: ['POST'])]
+    #[Route('api/login', name: 'app_loginn', methods: ['POST'])]
     public function login(AuthenticationUtils $authenticationUtils): JsonResponse
     {
         // Get the login error if there is one

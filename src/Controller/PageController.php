@@ -3,65 +3,27 @@
 namespace App\Controller;
 
 use App\Repository\PostRepository;
+use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 final class PageController extends AbstractController{
     #[Route('/', name: 'feed_page')]
-    public function feed(PostRepository $postRepository): Response
+    public function feed(UserRepository $userRepository, PostRepository $postRepository): Response
     {
-        // $user = $this->getUser();
-        // if (!$user) {
-        //     return $this->redirectToRoute('login_page');
-        // }
-        
-        // $posts = $postRepository->getPosts();
-        $posts = [
-            [
-                'id'=> 1,
-                'title'=> 'Post 1',
-                'image'=> 'image1.jpg',
-                'author' => 'John Doe',
-                'date' => '2023-10-01',
-                'content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-                'likes' => 10,
-                'comments' => 5
-            ],
-            [
-                'id'=> 2,
-                'title'=> 'Post 2',
-                'image'=> 'image2.jpg',
-                'author' => 'Jane Smith',
-                'date' => '2023-10-02',
-                'content' => 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                'likes' => 20,
-                'comments' => 8
-            ],
-            [
-                'id'=> 3,
-                'title'=> 'Post 3',
-                'image'=> 'image3.jpg',
-                'author' => 'Alice Johnson',
-                'date' => '2023-10-03',
-                'content' => 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-                'likes' => 15,
-                'comments' => 3
-            ],
-            [
-                'id'=> 4,
-                'title'=> 'Post 4',
-                'image'=> 'image4.jpg',
-                'author' => 'Bob Brown',
-                'date' => '2023-10-04',
-                'content' => 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-                'likes' => 25,
-                'comments' => 12
-            ]
-        ];
+        $posts = $postRepository->findAll();
+        $users = [];
+        foreach ($posts as $post) {
+            $userId = $post->getUserId();
+            if (!array_key_exists($userId, $users)) {
+            $users[$userId] = $userRepository->findById($userId);
+            }
+        }
 
         return $this->render('page/feed.html.twig', [
             'posts' => $posts,
+            'users'=> $users
         ]);
     }
 
