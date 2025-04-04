@@ -3,11 +3,12 @@
     type="{{ type|default('button') }}"
     class="
         button 
-        button-medium
+        button-{{ size|default('medium') }}
         {{ variant|default('primary') == 'primary' ? 'button-primary' : 'button-secondary' }}
+        {{ state|default('default') == 'hover' ? (variant|default('primary') == 'primary' ? 'button-primary-hover' : 'button-secondary-hover') : '' }}
         {{ class|default('') }}
     "
-    {{ disabled|default(false) ? 'disabled' : '' }}
+    {% if state|default('default') == 'disabled' or disabled|default(false) %}disabled{% endif %}
     {{ attributes|default('') }}
 >
     {% if leftIcon is defined and leftIcon %}

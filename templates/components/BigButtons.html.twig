@@ -4,10 +4,10 @@
     class="
         button 
         button-big
-        {{ variant|default('primary') == 'primary' ? 'button-primary' : 'button-secondary' }}
+        {% if disabled|default(false) %}button-disabled{% else %}{{ variant|default('primary') == 'primary' ? 'button-primary' : 'button-secondary' }}{% endif %}
         {{ class|default('') }}
     "
-    {{ disabled|default(false) ? 'disabled' : '' }}
+    {% if disabled|default(false) %}disabled{% endif %}
     {{ attributes|default('') }}
 >
     {% if leftIcon is defined and leftIcon %}

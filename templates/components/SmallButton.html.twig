@@ -4,15 +4,15 @@
     class="
         button 
         button-small
-        {{ variant|default('primary') == 'primary' ? 'button-primary' : 'button-secondary' }}
+        {% if disabled|default(false) %}button-disabled{% else %}{{ variant|default('primary') == 'primary' ? 'button-primary' : 'button-secondary' }}{% endif %}
         {{ class|default('') }}
     "
-    {{ disabled|default(false) ? 'disabled' : '' }}
+    {% if disabled|default(false) %}disabled{% endif %}
     {{ attributes|default('') }}
 >
     {% if leftIcon is defined and leftIcon %}
         <span class="button-icon button-icon-left">
-            {% include 'components/Icon.html.twig' with { 'iconName': leftIcon, 'size': iconSize|default('sm') } %}
+            {% include 'components/Icon.html.twig' with { 'iconName': leftIcon, 'size': 'sm' } %}
         </span>
     {% endif %}
     
@@ -24,7 +24,7 @@
     
     {% if rightIcon is defined and rightIcon %}
         <span class="button-icon button-icon-right">
-            {% include 'components/Icon.html.twig' with { 'iconName': rightIcon, 'size': iconSize|default('sm') } %}
+            {% include 'components/Icon.html.twig' with { 'iconName': rightIcon, 'size': 'sm' } %}
         </span>
     {% endif %}
 </button>

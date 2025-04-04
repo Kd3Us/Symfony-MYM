@@ -4,9 +4,52 @@
 
 {% block body %}
 
-{% include 'components/navButton.html.twig' with {isActive: true, isActionButton: false, iconName: "icon-home", text: "Bonjour"} %}
-{% include 'components/link.html.twig' with {text: "Text", href: "url", variant: "blue"} %}
-{% include 'components/input.html.twig' with {id: "Text", name: "url", label: "blue", required: true, placeholder: "eee", disabled: false} %}
-{% include 'components/quickActions.html.twig' with {iconName: "icon-heart", text: "CC"} %}
+<div class="container" style="display: flex; flex-direction: column; gap: 20px; padding: 20px;">
+    <div class="section">
+        <h2 style="color: var(--text-light); margin-bottom: 10px;">Existing Components</h2>
+        <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+            {% include 'components/navButton.html.twig' with {isActive: true, isActionButton: false, iconName: "icon-home", text: "Bonjour"} %}
+            {% include 'components/link.html.twig' with {text: "Text", href: "url", variant: "blue"} %}
+            {% include 'components/input.html.twig' with {id: "Text", name: "url", label: "blue", required: true, placeholder: "eee", disabled: false} %}
+            {% include 'components/quickActions.html.twig' with {iconName: "icon-heart", text: "CC"} %}
+        </div>
+    </div>
+
+    <div class="section">
+        <h2 style="color: var(--text-light); margin-bottom: 10px;">Button Components</h2>
+        
+        <h3 style="color: var(--text-light); margin: 15px 0 10px 0;">Very Small Buttons</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+            {% include 'components/VerySmallButton.html.twig' with {label: 'Primary', variant: 'primary'} %}
+            {% include 'components/VerySmallButton.html.twig' with {label: 'Secondary', variant: 'secondary'} %}
+            {% include 'components/VerySmallButton.html.twig' with {label: 'With Icon', leftIcon: 'icon-heart', variant: 'primary'} %}
+            {% include 'components/VerySmallButton.html.twig' with {label: 'Disabled', disabled: true} %}
+        </div>
+        
+        <h3 style="color: var(--text-light); margin: 15px 0 10px 0;">Small Buttons</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+            {% include 'components/SmallButton.html.twig' with {label: 'Primary', variant: 'primary'} %}
+            {% include 'components/SmallButton.html.twig' with {label: 'Secondary', variant: 'secondary'} %}
+            {% include 'components/SmallButton.html.twig' with {label: 'With Icon', rightIcon: 'icon-upload', variant: 'primary'} %}
+            {% include 'components/SmallButton.html.twig' with {label: 'Disabled', disabled: true} %}
+        </div>
+        
+        <h3 style="color: var(--text-light); margin: 15px 0 10px 0;">Medium Buttons</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+            {% include 'components/Button.html.twig' with {label: 'Primary', variant: 'primary'} %}
+            {% include 'components/Button.html.twig' with {label: 'Secondary', variant: 'secondary'} %}
+            {% include 'components/Button.html.twig' with {label: 'With Icons', leftIcon: 'icon-settings', rightIcon: 'icon-plus', variant: 'primary'} %}
+            {% include 'components/Button.html.twig' with {label: 'Disabled', disabled: true} %}
+        </div>
+        
+        <h3 style="color: var(--text-light); margin: 15px 0 10px 0;">Big Buttons</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 15px;">
+            {% include 'components/BigButtons.html.twig' with {label: 'Primary', variant: 'primary'} %}
+            {% include 'components/BigButtons.html.twig' with {label: 'Secondary', variant: 'secondary'} %}
+            {% include 'components/BigButtons.html.twig' with {label: 'With Icon', leftIcon: 'icon-plus', variant: 'primary'} %}
+            {% include 'components/BigButtons.html.twig' with {label: 'Disabled', disabled: true} %}
+        </div>
+    </div>
+</div>
 
 {% endblock %}
