@@ -1,14 +1,15 @@
-{# templates/components/Button.html.twig #}
 <button 
     type="{{ type|default('button') }}"
     class="
         button 
         button-{{ size|default('medium') }}
-        {{ variant|default('primary') == 'primary' ? 'button-primary' : 'button-secondary' }}
-        {{ state|default('default') == 'hover' ? (variant|default('primary') == 'primary' ? 'button-primary-hover' : 'button-secondary-hover') : '' }}
+        {% if disabled|default(false) %}button-disabled{% endif %}
+        {% if inactive|default(false) %}button-inactive{% else %}
+            button-primary
+        {% endif %}
         {{ class|default('') }}
     "
-    {% if state|default('default') == 'disabled' or disabled|default(false) %}disabled{% endif %}
+    {% if disabled|default(false) %}disabled{% endif %}
     {{ attributes|default('') }}
 >
     {% if leftIcon is defined and leftIcon %}
@@ -17,11 +18,13 @@
         </span>
     {% endif %}
     
-    {% if label is defined %}
-        <span class="button-label">{{ label }}</span>
-    {% else %}
-        <span class="button-label">{{ content|default('Button') }}</span>
-    {% endif %}
+    <span class="button-label">
+        {% if label is defined %}
+            {{ label }}
+        {% else %}
+            Button
+        {% endif %}
+    </span>
     
     {% if rightIcon is defined and rightIcon %}
         <span class="button-icon button-icon-right">

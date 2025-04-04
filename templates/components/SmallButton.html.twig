@@ -1,10 +1,12 @@
-{# templates/components/SmallButton.html.twig #}
 <button 
     type="{{ type|default('button') }}"
     class="
         button 
         button-small
-        {% if disabled|default(false) %}button-disabled{% else %}{{ variant|default('primary') == 'primary' ? 'button-primary' : 'button-secondary' }}{% endif %}
+        {% if disabled|default(false) %}button-disabled{% endif %}
+        {% if inactive|default(false) %}button-inactive{% else %}
+            button-primary
+        {% endif %}
         {{ class|default('') }}
     "
     {% if disabled|default(false) %}disabled{% endif %}
@@ -16,11 +18,13 @@
         </span>
     {% endif %}
     
-    {% if label is defined %}
-        <span class="button-label">{{ label }}</span>
-    {% else %}
-        <span class="button-label">{{ block('content')|default('Button') }}</span>
-    {% endif %}
+    <span class="button-label">
+        {% if label is defined %}
+            {{ label }}
+        {% else %}
+            Button
+        {% endif %}
+    </span>
     
     {% if rightIcon is defined and rightIcon %}
         <span class="button-icon button-icon-right">
