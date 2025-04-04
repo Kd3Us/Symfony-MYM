@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log In{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/auth.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="auth-page">
+    <div class="auth-logo">
+        <h1>ME3M</h1>
+    </div>
+    
+    <div class="auth-card">
+        <h2 class="auth-title">Log In</h2>
+        
+        <form method="post" action="{{ path('app_login') }}">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="_username" class="form-control" placeholder="name@example.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="_password" class="form-control" placeholder="Write your password" required>
+            </div>
+            
+            <div class="forgot-password">
+                <a href="#">Forgot password?</a>
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Log in</button>
+            
+            {# CSRF token #}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+        </form>
+        
+        <div class="auth-links">
+            <span>Don't have an account? </span>
+            <a href="{{ path('app_register') }}" class="auth-link">Register here</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

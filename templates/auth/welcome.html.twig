@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcome!{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('styles/auth.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="welcome-container">
+    <div class="header">
+        <div class="logo">
+            <h1>ME3M</h1>
+            {# <img src="{{ asset('path/to/your/logo.svg') }}" alt="ME3M Logo"> #}
+        </div>
+    </div>
+    
+    <div class="welcome-content">
+        <h2 class="welcome-title">Welcome !</h2>
+        
+        <p class="welcome-subtitle">What will you do...</p>
+        
+        <div class="welcome-actions">
+            <a href="{{ path('app_register') }}" class="btn welcome-btn">Create an account</a>
+            <a href="{{ path('app_login') }}" class="btn welcome-btn">Log In</a>
+        </div>
+        
+        <div class="welcome-skip">
+            <p>Maybe none of these...</p>
+            <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="skip-link">Click here :)</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
