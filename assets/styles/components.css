@@ -1,6 +1,61 @@
 input {
     all: unset;
 }
+a {
+    color: white;
+}
+
+/* NAV BUTTONS */
+.nav-button {
+    display: flex;
+    align-items: center;
+    padding: 10px 16px 10px 8px;
+    gap: 10px;
+    border-radius: 8px;
+    background-color: var(--bg-gray);
+    color: var(--text-muted);
+    font-size: var(--font-big-text);
+    cursor: pointer;
+}
+
+.nav-button .icon path {
+    stroke: var(--text-muted);
+}
+
+.nav-button-action {
+    color: var(--text-light);
+    font-size: var(--font-big-text);
+    background-color: var(--blue-prim);
+}
+
+.nav-button-action .icon path {
+    stroke: var(--white);
+}
+
+.nav-button:hover {
+    background-color: var(--gray);
+}
+
+.nav-button-action:hover {
+    background-color: var(--blue-prim-hover);
+}
+/* LIKNK */
+
+.link-component {
+    color: var(--text-light);
+    text-decoration: underline;
+    font-size: var(--font-link);
+}
+
+.link-component-blue {
+    color: var(--blue-prim);
+}
+
+.link-component-blue:hover {
+    color: var(--blue-prim-hover);
+}
+
+/* INPUT COMPONENT */
 
 .input-component {
     display: flex;
@@ -12,6 +67,7 @@ input {
 .input-component input {
     padding: 10px 24px 10px 16px;
     border-radius: 10px;
+    font-style: var(--font-paragraph);
     background-color: var(--gray);
     border: 1px solid var(--button-border);
 }
