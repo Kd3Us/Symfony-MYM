@@ -1,0 +1,39 @@
+{% set variants = {
+    'primary-default': 'bg-[var(--blue-prim)] text-white',
+    'primary-hover': 'bg-[var(--blue-hover)] text-white',
+    'secondary-default': 'bg-[var(--gray)] text-white',
+    'secondary-hover': 'bg-transparent border border-[var(--blue-hover)] text-[var(--blue-hover)]'
+} %}
+
+<button 
+    type="{{ type ?? 'button' }}"
+    class="
+        inline-flex 
+        py-3 
+        px-[18px] 
+        justify-center 
+        items-center 
+        gap-[10px] 
+        rounded-full 
+        transition-all 
+        duration-200
+        text-[var(--font-buttons-text)]
+        font-[var(--weight-medium)]
+        {{ variants[variant] ?? variants['primary-default'] }}
+    "
+    {{ block('button_attributes') }}
+>
+    {% if left_icon %}
+        <span class="mr-2">
+            {{ include('components/icon.html.twig', { name: 'home' }) }}
+        </span>
+    {% endif %}
+    
+    {{ label }}
+    
+    {% if right_icon %}
+        <span class="ml-2">
+            {{ include('components/icon.html.twig', { name: 'home' }) }}
+        </span>
+    {% endif %}
+</button>
