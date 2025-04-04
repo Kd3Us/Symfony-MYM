@@ -6,7 +6,6 @@
     border-radius: 50px;
     border: none;
     outline: none;
-    font-weight: var(--weight-medium);
     transition: all var(--transition);
     cursor: pointer;
     gap: 8px;
@@ -34,7 +33,7 @@
 
 .button-big {
     padding: 14px 22px;
-    font-size: var(--font-big-text);
+    font-size: var(--font-little-little);
     height: 52px;
 }
 
@@ -181,8 +180,9 @@
 
 .button-big.button-inactive {
     background-color: transparent;
-    border: 1px solid var(--text-light);
+    border: 1px solid var(--button-border);
     color: var(--text-light);
+    width: 100%;
 }
 
 .button-big.button-inactive:hover {
