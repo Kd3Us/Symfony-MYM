@@ -11,10 +11,11 @@
 <div class="example-wrapper">
     <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/Al/Desktop/Cours_HETIC/second_semestre/Back/Symphony/Symfony_MYM/src/Controller/PostController.php</code></li>
-        <li>Your template at <code>C:/Users/Al/Desktop/Cours_HETIC/second_semestre/Back/Symphony/Symfony_MYM/templates/post/index.html.twig</code></li>
-    </ul>
+    <form action="/createPost" method="POST" enctype="multipart/form-data">
+    <input type="file" name="image" required>
+    <input type="text" name="description" placeholder="Description" required>
+    <input type="hidden" name="user_id" value="1">
+    <button type="submit">Envoyer</button>
+</form>
 </div>
 {% endblock %}
