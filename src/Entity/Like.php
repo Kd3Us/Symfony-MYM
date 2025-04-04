@@ -14,13 +14,13 @@ class Like
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $user = null;
+    #[ORM\ManyToOne(targetEntity: User::class, inversedBy: 'likes')]
+    #[ORM\JoinColumn(nullable: false)] // Relation obligatoire
+    private User $user;
 
-    #[ORM\ManyToOne]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?Post $post = null;
+    #[ORM\ManyToOne(targetEntity: Post::class, inversedBy: 'likes')]
+    #[ORM\JoinColumn(nullable: false)] // Relation obligatoire
+    private Post $post;
 
     #[ORM\Column]
     private ?\DateTimeImmutable $createdAt = null;
@@ -30,24 +30,24 @@ class Like
         return $this->id;
     }
 
-    public function getUser(): ?User
+    public function getUser(): User
     {
         return $this->user;
     }
 
-    public function setUser(?User $user): static
+    public function setUser(User $user): static
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getPost(): ?Post
+    public function getPost(): Post
     {
         return $this->post;
     }
 
-    public function setPost(?Post $post): static
+    public function setPost(Post $post): static
     {
         $this->post = $post;
 
