@@ -59,14 +59,13 @@
 <div class="page">
     <div class="register-container">
         <h1>Register</h1>
-        <form>
+        <form method="post" action="{{ path('app_register') }}">
             <div class="inputs">
                     {{ include('components/Input.html.twig', { id: 'username', label: 'Username', name: 'username', placeholder: 'Your Username' }) }}
                     {{ include('components/Input.html.twig', { id: 'email', label: 'Email', type: "email", name: 'email', placeholder: 'your@email.com' }) }}
                     {{ include('components/Input.html.twig', { id: 'password', label: 'Password',type: "password", name: 'password', placeholder: 'Write your password' }) }}
-                    {{ include('components/Input.html.twig', { id: 'passwordConfirm', label: 'Password',type: "password", name: 'passwordConfirm', placeholder: 'Confirm your password' }) }}
             </div>
-            {{ include('components/Button.html.twig', { label: 'Register' }) }}
+            {{ include('components/Button.html.twig', { label: 'Register', type: "submit" }) }}
         </form>
         <div class="footer">
             <p>Allready have an account?</p>

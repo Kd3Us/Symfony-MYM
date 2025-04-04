@@ -59,15 +59,16 @@
 <div class="page">
     <div class="register-container">
         <h1>Log In</h1>
-        <form>
+        <form method="post" action="{{ path('app_login') }}">
             <div class="inputs">
-                    {{ include('components/Input.html.twig', { id: 'email', label: 'Email', type: "email", name: 'email', placeholder: 'your@email.com' }) }}
+                    {{ include('components/Input.html.twig', { id: 'email', label: 'Email', type: "email", name: '_username', placeholder: 'your@email.com', required:true }) }}
                 <div class="password">
-                    {{ include('components/Input.html.twig', { id: 'password', label: 'Password',type: "password", name: 'password', placeholder: 'Forgot password ?' }) }}
+                    {{ include('components/Input.html.twig', { id: 'password', label: 'Password',type: "password", name: '_password', placeholder: 'Forgot password ?', required: true }) }}
                     {{ include('components/Link.html.twig', { href: 'https://www.youtube.com/watch?v=dQw4w9WgXcQ', text: "Forgot password ?" }) }}
                 </div>
             </div>
-            {{ include('components/Button.html.twig', { label: 'Log In' }) }}
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            {{ include('components/Button.html.twig', { label: 'Log In', type:"submit" }) }}
         </form>
         <div class="footer">
             <p>Don't have an account?</p>

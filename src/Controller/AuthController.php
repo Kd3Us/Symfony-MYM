@@ -46,12 +46,19 @@ final class AuthController extends AbstractController
     ): Response
     {
 
-        $data = json_decode($request->getContent(), true);
+        $data = $request->request->all();
 
+        if (empty($data)) {
+            return $this->json([
+            'status' => 'error',
+            'message' => 'No form data provided',
+            ], 400);
+        }
 
-        if (!isset($data['username'], $data['email'], $data['password'])) {
+        if (!isset($data['username']) || !isset($data['email']) || !isset($data['password'])) {
             return $this->json([
                 'status' => 'error',
+                'data' => $data,
                 'message' => 'Missing fields: username, email, or password',
             ], 400);  // Bad request
         }
@@ -88,17 +95,18 @@ final class AuthController extends AbstractController
         // save user in database
         $entityManager->persist($user);
         $entityManager->flush();
-
-        // return success response
+        // return success response with redirection to /login
         return $this->json([
             'status' => 'success',
             'message' => 'User created successfully.',
             'user' => [
-                'id' => $user->getId(),
-                'username' => $user->getUserName(),
-                'email' => $user->getEmail(),
+            'id' => $user->getId(),
+            'username' => $user->getUserName(),
+            'email' => $user->getEmail(),
             ]
-        ], 201);
+        ], 201, [
+            'Location' => $this->generateUrl('login_page'),
+        ]);
     }
 
     #[Route('/logout', name: 'app_logout', methods: ['POST'])]

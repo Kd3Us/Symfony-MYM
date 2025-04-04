@@ -16,3 +16,10 @@ Créez un bucket avec le nom **__symfony__** et mettez l'Access Policy en **__PU
 
 ## ÉTAPE 3 :
 Rendez vous sur : http://localhost:8080 et créez un utilisateur ainsi que des posts (les images_id sont en fait des liens mennant vers les images..............)
+
+
+# PS
+Les pages qui "fonctionnent"
+- Register
+- Login
+- Feed

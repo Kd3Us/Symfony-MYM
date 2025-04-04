@@ -116,6 +116,7 @@
             <span class="feed-header-text">Your Feed</span>
         </div>
         <div class="separator"></div>
+        {{dump(me)}}
         {% for post in posts %}
             <div class="post">
                 <img src="https://i.pinimg.com/736x/66/41/de/6641deb8863aceb2d6ac885d84ba1249.jpg" alt="Profile Picture" class="profile-pic">
@@ -133,8 +134,8 @@
                         </div>
                         <div class="post-content-body-interaction">
                             <div class="post-content-body-interaction">
-                                {{ include('components/QuickActions.html.twig', { iconName: 'icon-heart', text: '10k' }) }}
-                                {{ include('components/QuickActions.html.twig', { iconName: 'icon-comment', text: '10' }) }}
+                                {{ include('components/QuickActions.html.twig', { class: 'like-button', iconName: 'icon-heart', text: '10k' }) }}
+                                {{ include('components/QuickActions.html.twig', { class: 'comment-button', iconName: 'icon-comment', text: '10' }) }}
                             </div>
                         </div>
                     </div>
