@@ -11,7 +11,8 @@ final class PostController extends AbstractController
     #[Route('/post', name: 'app_post')]
     public function index(): Response
     {
-        return $this->render('post/index.html.twig', [
+        $user = $this->getUser();
+        return $this->render('post/login.html.twig', [
             'controller_name' => 'PostController',
         ]);
     }
