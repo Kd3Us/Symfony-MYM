@@ -1,39 +1,32 @@
-{% set variants = {
-    'primary-default': 'bg-[var(--blue-prim)] text-white',
-    'primary-hover': 'bg-[var(--blue-hover)] text-white',
-    'secondary-default': 'bg-[var(--gray)] text-white',
-    'secondary-hover': 'bg-transparent border border-[var(--blue-hover)] text-[var(--blue-hover)]'
-} %}
-
+{# templates/components/VerySmallButton.html.twig #}
 <button 
-    type="{{ type ?? 'button' }}"
+    type="{{ type|default('button') }}"
     class="
-        inline-flex 
-        py-2 
-        px-[20px] 
-        justify-center 
-        items-center 
-        gap-[10px] 
-        rounded-full 
-        transition-all 
-        duration-200
-        text-[var(--font-little-little)]
-        font-[var(--weight-medium)]
-        {{ variants[variant] ?? variants['primary-default'] }}
+        button 
+        button-very-small
+        {% if disabled|default(false) %}
+            button-disabled
+        {% else %}
+            {% if variant|default('primary') == 'outline' %}
+            button-outline
+            {% else %}
+            {{ variant|default('primary') == 'primary' ? 'button-primary' : 'button-secondary' }}
+            {% endif %}
+        {% endif %}
+        {{ class|default('') }}
     "
-    {{ block('button_attributes') }}
+    {% if disabled|default(false) %}disabled{% endif %}
+    {{ attributes|default('') }}
 >
-    {% if left_icon %}
-        <span class="mr-2">
-            {{ include('components/icon.html.twig', { name: 'home' }) }}
+    {% if leftIcon is defined and leftIcon %}
+        <span class="button-icon button-icon-left">
+            {% include 'components/Icon.html.twig' with { 'iconName': leftIcon, 'size': 'sm' } %}
         </span>
     {% endif %}
     
-    {{ label }}
-    
-    {% if right_icon %}
-        <span class="ml-2">
-            {{ include('components/icon.html.twig', { name: 'home' }) }}
-        </span>
+    {% if label is defined %}
+        <span class="button-label">{{ label }}</span>
+    {% else %}
+        <span class="button-label">{{ block('content')|default('Button') }}</span>
     {% endif %}
 </button>

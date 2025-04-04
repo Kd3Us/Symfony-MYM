@@ -16,6 +16,8 @@ a {
     color: var(--text-muted);
     font-size: var(--font-big-text);
     cursor: pointer;
+    width: max-content;
+    height: max-content;
 }
 
 .nav-button .icon path {
@@ -94,6 +96,7 @@ a {
     border: 1px solid rgba(0, 0, 0, 0);
     background-color: var(--bg-gray);
     width: max-content;
+    height: max-content;
     cursor: pointer;
 }
 

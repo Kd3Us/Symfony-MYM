@@ -1,0 +1,164 @@
+/* Base button styles */
+.button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    border: none;
+    outline: none;
+    font-weight: var(--weight-medium);
+    transition: all var(--transition);
+    cursor: pointer;
+    gap: 8px;
+}
+
+/* Button sizes */
+.button-very-small {
+    padding: 6px 12px;
+    font-size: var(--font-little-little);
+    height: 28px;
+}
+
+
+.button-small {
+    padding: 8px 16px;
+    font-size: var(--font-buttons-text);
+    height: 36px;
+}
+
+.button-medium {
+    padding: 10px 18px;
+    font-size: var(--font-buttons-text);
+    height: 44px;
+}
+
+.button-big {
+    padding: 14px 22px;
+    font-size: var(--font-big-text);
+    height: 52px;
+}
+
+/* Button variants */
+.button-primary {
+    background-color: var(--blue-prim);
+    color: var(--text-light);
+    border: none;
+}
+
+.button-primary:hover {
+    background-color: var(--blue-prim-hover);
+}
+
+.button-primary:active {
+    background-color: #1845A0;
+}
+
+.button-secondary {
+    background-color: var(--gray);
+    color: var(--text-light);
+    border: 1px solid var(--button-border);
+}
+
+.button-secondary:hover {
+    background-color: #3A3A3A;
+}
+
+.button-secondary:active {
+    background-color: #2A2A2A;
+    border-color: #505050;
+}
+
+.button-outlined {
+    background-color: transparent;
+    border: 1px solid var(--blue-prim);
+    color: var(--blue-prim);
+}
+
+.button-outlined:hover {
+    background-color: rgba(60, 127, 255, 0.1);
+}
+
+.button-outlined:active {
+    background-color: rgba(60, 127, 255, 0.2);
+}
+
+/* Button states */
+.button:disabled,
+.button.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.button-primary:disabled,
+.button-primary.disabled {
+    background-color: #3D5E99;
+    color: rgba(250, 251, 253, 0.5);
+}
+
+.button-secondary:disabled,
+.button-secondary.disabled {
+    background-color: #343434;
+    border-color: #404040;
+    color: rgba(250, 251, 253, 0.5);
+}
+
+.button-outlined:disabled,
+.button-outlined.disabled {
+    border-color: #566E9E;
+    color: #566E9E;
+}
+
+.button:focus {
+    outline: none;
+}
+
+/* Icon alignment */
+.button-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-icon-left {
+    margin-right: 4px;
+}
+
+.button-icon-right {
+    margin-left: 4px;
+}
+
+/* Button label */
+.button-label {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+}
+
+/* Button groups */
+.button-group {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 24px;
+}
+
+/* Button variations section */
+.button-variations {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 24px;
+}
+
+.button-variations-title {
+    color: var(--text-light);
+    font-size: var(--font-paragraph);
+    margin-bottom: 12px;
+}
+
+.button-variations-row {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
