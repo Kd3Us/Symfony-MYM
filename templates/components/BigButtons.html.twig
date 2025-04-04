@@ -1,6 +1,30 @@
-<div class="big-button">
-    <div class="icon">
-        {% include 'components/Icon.html.twig' with { 'selected_icon': iconName, "size": "sm" } %}
-    </div>
-    <span class="text">{{ text }}</span>
-</div>
+{# templates/components/BigButton.html.twig #}
+<button 
+    type="{{ type|default('button') }}"
+    class="
+        button 
+        button-big
+        {{ variant|default('primary') == 'primary' ? 'button-primary' : 'button-secondary' }}
+        {{ class|default('') }}
+    "
+    {{ disabled|default(false) ? 'disabled' : '' }}
+    {{ attributes|default('') }}
+>
+    {% if leftIcon is defined and leftIcon %}
+        <span class="button-icon button-icon-left">
+            {% include 'components/Icon.html.twig' with { 'iconName': leftIcon, 'size': iconSize|default('md') } %}
+        </span>
+    {% endif %}
+    
+    {% if label is defined %}
+        <span class="button-label">{{ label }}</span>
+    {% else %}
+        <span class="button-label">{{ block('content')|default('Button') }}</span>
+    {% endif %}
+    
+    {% if rightIcon is defined and rightIcon %}
+        <span class="button-icon button-icon-right">
+            {% include 'components/Icon.html.twig' with { 'iconName': rightIcon, 'size': iconSize|default('md') } %}
+        </span>
+    {% endif %}
+</button>
